@@ -1,32 +1,36 @@
-> Since June, 2015
+# TanStack Start - Basic Example
 
-1 Issue at a time. Big Milestones.
-- [x] Set up GH-Page for CW-Main
-- [ ] TODO APP
-      - [ ] version 0.1
-      - [ ] Github page
-      - [ ] Initial Design
-- [ ] Firebase host.
-      - [ ]       
-- [ ] Integration with Google Firebase
-- [ ] Requirements update
+This is the basic TanStack Start example, demonstrating the fundamentals of building applications with TanStack Router and TanStack Start.
 
+- [TanStack Router Docs](https://tanstack.com/router)
 
-npm i @chakra-ui/gatsby-plugin @chakra-ui/react @emotion/react @emotion/styled framer-motion
+It's deployed automagically with Netlify!
 
-      resolve: "@chakra-ui/gatsby-plugin",
-      options: {
-        /**
-         * @property {boolean} [resetCSS=true]
-         * if false, this plugin will not use `<CSSReset />
-         */
-        resetCSS: true,
-        /**
-         * @property {boolean} [isUsingColorMode=true]
-         * if false, this plugin will not use <ColorModeProvider />
-         */
-        isUsingColorMode: true,
-      },
-    },
+- [Netlify](https://netlify.com/)
 
-    
+## Start a new project based on this example
+
+To start a new project based on this example, run:
+
+```sh
+npx gitpick TanStack/router/tree/main/examples/react/start-basic start-basic
+```
+
+## Getting Started
+
+From your terminal:
+
+```sh
+pnpm install
+pnpm dev
+```
+
+This starts your app in development mode, rebuilding assets on file changes.
+
+## Build
+
+To build the app for production:
+
+```sh
+pnpm build
+```
