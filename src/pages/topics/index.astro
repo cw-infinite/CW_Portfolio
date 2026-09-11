@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TopicsGrid from '../../components/TopicsGrid.tsx';
+import { topics } from '../../data/topics';
+---
+<Layout title="Topics — Full Index">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 pt-24">
+    <div class="max-w-[720px]">
+      <div class="text-[11px] tracking-widest uppercase text-neutral-400">Archive / 2023—2026</div>
+      <h1 class="mt-3 font-display text-[44px] md:text-[64px] leading-[0.95] tracking-tight">All topics, <span class="text-neutral-400">one surface</span></h1>
+      <p class="mt-4 text-[16px] leading-[1.5] text-neutral-600">Cards for glancing, table for scanning. Filter by category, search by tag. Each entry is a page with its own content HTML — swap to MDX whenever you want.</p>
+    </div>
+    <div class="mt-10">
+      <TopicsGrid client:load topics={topics} />
+    </div>
+  </div>
+</Layout>

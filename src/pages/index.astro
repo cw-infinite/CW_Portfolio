@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.tsx';
+import { topics } from '../data/topics';
+import { TopicCard } from '../components/TopicCard.tsx';
+const featured = topics.filter(t => t.featured);
+---
+<Layout title="Lee Chulwoo — Airy Portfolio OS">
+  <Hero client:load />
+
+  <section class="mx-auto max-w-[1280px] px-6 md:px-10 mt-20">
+    <div class="flex items-end justify-between gap-6">
+      <div>
+        <h2 class="font-display text-[28px] md:text-[36px] tracking-tight">Selected index</h2>
+        <p class="mt-2 text-[14px] text-neutral-500 max-w-[520px]">A living archive — writing, builds, lab notes. Switch between cards and table on the full index page.</p>
+      </div>
+      <a href="/topics" class="hidden md:inline-flex text-[13px] border border-line rounded-full px-4 h-9 items-center bg-white hover:bg-neutral-50 transition">View all 36 →</a>
+    </div>
+
+    <div class="mt-8 grid md:grid-cols-3 gap-5">
+      {featured.map((t,i) => (
+        <div>
+          <TopicCard client:visible topic={t} index={i} />
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-[1.1fr_0.9fr] gap-6">
+      <div class="rounded-[24px] border border-line bg-white p-8 md:p-10 shadow-soft">
+        <div class="text-[11px] tracking-widest uppercase text-neutral-400">Design language</div>
+        <h3 class="mt-3 font-display text-[24px] leading-tight">Airy, clean, tidy, modern — with intention.</h3>
+        <ul class="mt-6 space-y-3 text-[14px] text-neutral-600">
+          <li class="flex gap-3"><span class="text-black">—</span> 8pt grid, 32px base line, 2x air scale</li>
+          <li class="flex gap-3"><span class="text-black">—</span> Soft shadows over hard borders, blur over opacity</li>
+          <li class="flex gap-3"><span class="text-black">—</span> Motion as meaning: stagger, spring, layout shift</li>
+          <li class="flex gap-3"><span class="text-black">—</span> Zero JS by default, React islands only when interactive</li>
+        </ul>
+      </div>
+      <div class="rounded-[24px] border border-line bg-black text-white p-8 md:p-10 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+        <div class="relative">
+          <div class="text-[11px] tracking-widest uppercase opacity-60">Navigation model</div>
+          <h3 class="mt-3 font-display text-[24px] leading-tight">Bring your HTML, we render it.</h3>
+          <p class="mt-3 text-[14px] leading-[1.5] opacity-70">You said you have bunch of HTML to show as navigation — this template accepts `html` strings in `src/data/navigation.ts`. Inject badges, <em>emphasis</em>, <strong>counts</strong> — whatever you need.</p>
+          <pre class="mt-6 rounded-xl bg-white/10 p-4 text-[12px] overflow-auto"><code>{`{ label: 'Projects',
+  href: '/projects',
+  html: '<strong>12 builds</strong> · 2023—2026'
+}`}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

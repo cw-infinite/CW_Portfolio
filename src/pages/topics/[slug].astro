@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { topics } from '../../data/topics';
+export function getStaticPaths() {
+  return topics.map(t => ({ params: { slug: t.slug }, props: { topic: t } }));
+}
+const { topic } = Astro.props;
+---
+<Layout title={`${topic.title} — Topics`}>
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 pt-28">
+    <a href="/topics" class="text-[12px] border border-line rounded-full px-3 py-1.5 bg-white hover:bg-neutral-50">← Back to index</a>
+    <div class="mt-8 grid lg:grid-cols-[1.15fr_0.85fr] gap-10">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-black text-white">{topic.category}</span>
+          <span class="text-[12px] text-neutral-500">{topic.year} · {topic.readingTime}</span>
+        </div>
+        <h1 class="mt-4 font-display text-[36px] md:text-[56px] leading-[0.95] tracking-tight text-balance">{topic.title}</h1>
+        <p class="mt-4 text-[18px] leading-[1.45] text-neutral-600">{topic.summary}</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {topic.tags.map(tag => <span class="text-[11px] px-2.5 py-1 rounded-full border border-line bg-[#fcfcfa]">{tag}</span>)}
+        </div>
+        {topic.links && (
+          <div class="mt-8 flex flex-wrap gap-2">
+            {topic.links.map(l => <a href={l.href} class="text-[13px] bg-black text-white px-4 py-2 rounded-full hover:bg-neutral-800 transition">{l.label}</a>)}
+          </div>
+        )}
+      </div>
+      <div class="lg:sticky lg:top-28 h-fit">
+        <div class="rounded-[20px] border border-line bg-white p-6 shadow-soft">
+          <div class="text-[11px] uppercase tracking-widest text-neutral-400">Quick nav — your HTML</div>
+          <div class="mt-4 space-y-3 text-[13px]">
+            <div class="p-3 rounded-xl bg-[#fcfcfa] border border-line" set:html={`<strong>On this page</strong><br/>Uses raw HTML from your data file. Replace with real TOC later.`}></div>
+            <a href="/topics" class="block p-3 rounded-xl hover:bg-neutral-50 border border-transparent hover:border-line transition">← All topics (table view available)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 max-w-[720px] prose prose-neutral prose-headings:font-display prose-p:leading-[1.7] prose-p:text-[16px]">
+      <div class="rounded-[20px] border border-line bg-white p-8 md:p-10 shadow-soft">
+        <div set:html={topic.contentHtml} />
+        <div class="mt-10 pt-8 border-t border-line">
+          <p class="text-[13px] text-neutral-500">This page is rendered from <code class="px-1.5 py-0.5 rounded bg-neutral-100">contentHtml</code> in <code class="px-1.5 py-0.5 rounded bg-neutral-100">src/data/topics.ts</code>. Swap to Astro content collections or MDX when you want — the layout already supports it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
