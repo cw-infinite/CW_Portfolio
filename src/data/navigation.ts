@@ -9,7 +9,7 @@ export const navLinks: NavLink[] = [
   { label: 'Index', href: '/', html: '<span>00 — Home base</span>' },
   { label: 'Topics', href: '/topics', html: '<span>All explorations & notes</span>', badge: '36' },
   { label: 'Writing', href: '/topics?filter=writing', html: '<em>Essays, systems thinking</em>' },
-  { label: 'Projects', href: '/topics?filter=projects', html: '<strong>Selected builds</strong> · 2023—2026' },
+  { label: 'Projects', href: '/projects', html: '<strong>Selected builds</strong> · 2023—2026' },
   { label: 'Experiments', href: '/topics?filter=experiments', html: '<span>Lab / R&D / Prototypes</span>' },
   { label: 'About', href: '/about', html: '<span>Bio, stack, contact</span>' },
 ];

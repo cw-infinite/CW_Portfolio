@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { topics } from '../../data/topics';
+
+const projects = topics.filter(t => t.category === 'projects');
+---
+<Layout title="Projects — Selected Builds">
+  <div class="mx-auto max-w-[1280px] px-6 md:px-10 pt-28">
+    {/* Header */}
+    <div class="max-w-[720px]">
+      <div class="text-[11px] tracking-widest uppercase text-neutral-400">Selected Builds · 2023—2026</div>
+      <h1 class="mt-3 font-display text-[44px] md:text-[64px] leading-[0.95] tracking-tight">Projects <span class="text-neutral-400">&amp; builds</span></h1>
+      <p class="mt-4 text-[16px] leading-[1.5] text-neutral-600">A curated showcase of products, platforms, and experiments. Each card highlights the build, the role, and the key details.</p>
+    </div>
+
+    {/* Projects grid — big cards */}
+    <div class="mt-12 grid md:grid-cols-2 gap-8">
+      {projects.map((t) => (
+        <a href={`/topics/${t.slug}`} class="group block rounded-[24px] border border-line bg-white overflow-hidden shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-500">
+          {/* Image Placeholder */}
+          <div class="relative aspect-[16/10] bg-[#f4f3f0] overflow-hidden">
+            <div class="absolute inset-0 grid-lines opacity-40" />
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center">
+                <div class="mx-auto h-16 w-16 rounded-2xl bg-white border border-line grid place-items-center shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-neutral-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" />
+                  </svg>
+                </div>
+                <p class="mt-3 text-[12px] text-neutral-400 tracking-wide">Project Image — {t.title}</p>
+                <p class="text-[11px] text-neutral-300 mt-0.5">Recommended: 1280×800px</p>
+              </div>
+            </div>
+            <div class="absolute top-4 left-4 flex items-center gap-2">
+              <span class="text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full bg-black text-white">{t.category}</span>
+              {t.featured && (
+                <span class="text-[10px] uppercase px-2.5 py-1 rounded-full bg-white/80 backdrop-blur border border-line text-neutral-600">★ Featured</span>
+              )}
+            </div>
+          </div>
+
+          {/* Content */}
+          <div class="p-8 md:p-10">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-display text-[24px] md:text-[28px] leading-tight tracking-tight group-hover:tracking-[-0.01em] transition-all">{t.title}</h3>
+                <div class="mt-2 flex items-center gap-3 text-[12px] text-neutral-500">
+                  <span>{t.year}</span>
+                  <span class="h-3 w-px bg-line" />
+                  <span>{t.readingTime}</span>
+                  {t.tags.length > 0 && (
+                    <>
+                      <span class="h-3 w-px bg-line" />
+                      <span>{t.tags.join(', ')}</span>
+                    </>
+                  )}
+                </div>
+              </div>
+              <span class="text-neutral-300 group-hover:text-black transition text-lg">↗</span>
+            </div>
+
+            <p class="mt-5 text-[15px] leading-[1.6] text-neutral-600">{t.summary}</p>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              {t.tags.map(tag => (
+                <span class="text-[11px] px-2.5 py-1 rounded-full border border-line bg-[#fcfcfa] text-neutral-600">{tag}</span>
+              ))}
+            </div>
+
+            {t.contentHtml && (
+              <div class="mt-6 pt-6 border-t border-line">
+                <div class="text-[11px] uppercase tracking-widest text-neutral-400">Overview</div>
+                <div class="mt-3 text-[13px] leading-[1.7] text-neutral-500" set:html={t.contentHtml.replace(/<h3[^>]*>.*?<\/h3>/gi, '').replace(/<pre>.*?<\/pre>/gi, '').replace(/<ul>.*?<\/ul>/gi, '').replace(/<li>/gi, '· ').replace(/<\/li>/gi, '')} />
+              </div>
+            )}
+
+            {t.links && t.links.length > 0 && (
+              <div class="mt-6 flex flex-wrap gap-2">
+                {t.links.map(l => (
+                  <a href={l.href} class="text-[13px] bg-black text-white px-4 py-2 rounded-full hover:bg-neutral-800 transition">{l.label}</a>
+                ))}
+              </div>
+            )}
+
+            <div class="mt-6 flex items-center gap-2 text-[13px] font-medium text-black">
+              <span>View full case study</span>
+              <span class="inline-flex transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {projects.length === 0 && (
+      <div class="mt-16 text-center py-24 border border-line rounded-[24px] bg-white">
+        <div class="text-[14px] text-neutral-500">No projects yet — add them to <code class="px-1.5 py-0.5 rounded bg-neutral-100">src/data/topics.ts</code> with <code class="px-1.5 py-0.5 rounded bg-neutral-100">category: 'projects'</code></div>
+      </div>
+    )}
+
+    <div class="mt-16">
+      <a href="/topics" class="inline-flex items-center gap-2 text-[13px] border border-line rounded-full px-4 h-9 bg-white hover:bg-neutral-50 transition">← View all topics</a>
+    </div>
+  </div>
+</Layout>
