@@ -23,10 +23,9 @@ export default function Nav({ navLinks, externalLinks }: { navLinks: Link[]; ext
       >
         <div className="mx-auto max-w-[1280px] px-6 md:px-10 h-[64px] flex items-center justify-between">
           <a href="/" className="flex items-center gap-3">
-            <div className="h-7 w-7 rounded-full bg-black text-white grid place-items-center text-[11px] font-semibold">LC</div>
-            <span className="text-[14px] font-medium tracking-tight">Lee Chulwoo</span>
+            <span className="text-[14px] font-medium tracking-tight">CW Infinite</span>
             <span className="hidden md:inline-block h-px w-8 bg-line mx-2" />
-            <span className="hidden md:inline text-[13px] text-neutral-500">Portfolio OS v1</span>
+            {/* <span className="hidden md:inline text-[13px] text-neutral-500">Portfolio OS v1</span> */}
           </a>
 
           <nav className="hidden md:flex items-center gap-8 text-[13px]">

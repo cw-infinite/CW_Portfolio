@@ -32,12 +32,12 @@ export default function Hero() {
           <div>
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.8, ease: [0.16,1,0.3,1] }} className="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase border border-line rounded-full px-3 py-1.5 bg-white/60 backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Available for new projects · Merrifield, VA
+              Available for new opportunities · VA, USA
             </motion.div>
 
             <div className="mt-8 overflow-hidden">
               <motion.h1 className="font-display font-[700] leading-[0.9] tracking-[-0.04em] text-[13vw] md:text-[88px] lg:text-[112px]">
-                {['Portfolio','built for','air & motion'].map((line, i) => (
+                {['Portfolio','built for','Jason'].map((line, i) => (
                   <motion.span key={line} initial={{ y: '110%' }} animate={{ y: '0%' }} transition={{ delay: 0.2 + i*0.12, duration: 1, ease: [0.16,1,0.3,1] }} className="block">
                     <span className={i===2 ? 'text-neutral-400 font-[600]' : ''}>{line}</span>
                   </motion.span>
@@ -46,7 +46,7 @@ export default function Hero() {
             </div>
 
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.8 }} className="mt-8 max-w-[560px] text-[18px] md:text-[20px] leading-[1.4] text-neutral-600 text-balance">
-              Airy, clean, and modern — with a heavy dose of motion. Astro + React + Framer Motion. A living index of writing, projects, and experiments.
+              10+ years of experience building and modernizing web applications, with a strong focus on frontend development using React, TypeScript, and JavaScript.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="mt-10 flex flex-wrap gap-3">
@@ -73,7 +73,7 @@ export default function Hero() {
           </div>
 
           {/* Right stack — floating cards */}
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 1, ease: [0.16,1,0.3,1] }} className="relative hidden md:block">
+          {/* <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 1, ease: [0.16,1,0.3,1] }} className="relative hidden md:block">
             <div className="relative aspect-[4/5] w-full">
               {[
                 { top: '0%', left: '10%', rot: -6, title: 'Designing for Air', meta: 'Writing · 6 min' },
@@ -97,7 +97,7 @@ export default function Hero() {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Marquee */}

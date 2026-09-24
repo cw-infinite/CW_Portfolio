@@ -3,7 +3,7 @@ interface Props {
   title?: string;
   description?: string;
 }
-const { title = 'Lee Chulwoo — Portfolio OS', description = 'Airy, modern portfolio built with Astro + React + Framer Motion' } = Astro.props;
+const { title = 'Jason Portfolio', description = 'Airy, modern portfolio built with Astro + React + Framer Motion' } = Astro.props;
 import '../styles/global.css';
 import Nav from '../components/Nav.tsx';
 import { navLinks, externalLinks } from '../data/navigation';
@@ -27,7 +27,7 @@ import { navLinks, externalLinks } from '../data/navigation';
     </main>
     <footer class="border-t border-line mt-24">
       <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-10 flex flex-col md:flex-row justify-between gap-6 text-[13px] text-neutral-500">
-        <div>© {new Date().getFullYear()} Lee Chulwoo — Built with Astro + React + Framer Motion</div>
+        <div>© {new Date().getFullYear()} CW - Built with Astro + React + Framer Motion</div>
         <div class="flex gap-4">
           <a href="/topics" class="hover:text-black transition">Index</a>
           <a href="/about" class="hover:text-black transition">About</a>
